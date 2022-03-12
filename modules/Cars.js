@@ -12,4 +12,4 @@ var carSchema = new mongooseSchema({
     dealer_id: String,
 });
 
-module.exports = mongoose.model('Cars', carSchema);
+module.exports = mongoose.model('Car', carSchema);
