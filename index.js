@@ -1,6 +1,11 @@
-import express from 'express';
-import Car from './modules/Cars';
-import bodyParser from 'body-parser';
+const express = require('express');
+const app = express();
+
+const bodyParser = require('body-parser');
+app.use(bodyParser.urlencoded({ extended: true }));
+
+const Car = require('./modules/Car'); 
+app.use(express.static('public'));
 
 /*
     cid
@@ -12,7 +17,6 @@ import bodyParser from 'body-parser';
     dealer_id
 */
 
-var app = express();
 
 // Routers
 app.use(express.static('public'));
