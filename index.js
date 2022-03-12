@@ -4,7 +4,7 @@ const app = express();
 const bodyParser = require('body-parser');
 app.use(bodyParser.urlencoded({ extended: true }));
 
-const Car = require('./modules/Car'); 
+const Car = require('./modules/Car.js'); 
 app.use(express.static('public'));
 
 /*
@@ -22,12 +22,12 @@ app.use(express.static('public'));
 app.use(express.static('public'));
 
 // Retrieve all
-app.get('/showAll', (req, res) => {
+app.use('/showAll', (req, res) => {
     Car.find((err, foundCars) => {
         if (err) {
             res.status(500).send(err);
         } else {
-            for(var foundCar in foundCars) {
+            for(var foundCar of foundCars) {
                 res.write(`<p>
                             ${foundCar.cid}, 
                             ${foundCar.year}, 
@@ -44,7 +44,7 @@ app.get('/showAll', (req, res) => {
 });
 
 // Create new
-app.post('/addNewItem', (req, res) => {
+app.post('/addCar', (req, res) => {
     let newCar = new Car ({
         cid: req.body.cid,
         year: req.body.year,
@@ -65,7 +65,7 @@ app.post('/addNewItem', (req, res) => {
 });
 
 // Find car
-app.post('findCid', (req,res) => {
+app.post('/findCar', (req,res) => {
     var searchCid = req.body.cid;
     Car.findOne( {cid: searchCid}, (err, foundCar) => {
         if(err) {
@@ -86,7 +86,7 @@ app.post('findCid', (req,res) => {
 });
 
 // update and edit
-app.post('/updateItem', (req, res) => {
+app.post('/updateCar', (req, res) => {
     
     var updateCar = req.body.cid;
 
@@ -97,12 +97,8 @@ app.post('/updateItem', (req, res) => {
         else if(!car1) {
             res.send(`No car with CID ${updateCar}`);
         } else {
-            car1.year = req.body.year;
-            car1.make = req.body.make;
-            car1.model = req.body.model;
             car1.miles = req.body.miles;
             car1.price = req.body.price;
-            car1.dealer_id = req.body.dealer_id;
 
             car1.save((err) => {
                 if(err) {
