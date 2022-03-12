@@ -1,3 +1,11 @@
+/*
+    Robert Johnson
+    CIT 253
+    Data Driven Web Pages
+    Project 4
+*/
+
+// Imports
 const express = require('express');
 const app = express();
 
@@ -85,7 +93,7 @@ app.post('/findCar', (req,res) => {
     });
 });
 
-// update and edit
+// update Miles and Price
 app.post('/updateCar', (req, res) => {
     
     var updateCar = req.body.cid;
@@ -110,7 +118,7 @@ app.post('/updateCar', (req, res) => {
     });
 })
 
-// Delete
+// Delete Car
 app.post('/deleteCar', (req, res) => {
     var deleteCid = req.body.cid;
 
