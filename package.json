@@ -1,0 +1,24 @@
+{
+  "name": "mongoose-crud",
+  "version": "1.0.0",
+  "description": "Assignment for Data Driven Websites class",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/rboswellj/mongoose-crud.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/rboswellj/mongoose-crud/issues"
+  },
+  "homepage": "https://github.com/rboswellj/mongoose-crud#readme",
+  "dependencies": {
+    "body-parser": "^1.19.2",
+    "express": "^4.17.3",
+    "mongoose": "^6.2.6"
+  }
+}
